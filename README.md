@@ -15,23 +15,23 @@
 ## 补充说明
 1. 关于微信公众号后台具体配置，请参考微信官方文档[接入指南](https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421135319)
 2. wx.php里提供了微信公众号接入网站的首次Token校验功能（如果已校验成功，可以忽略），使用方法为，将wx.php中的首次验证代码打开，临时关闭搜索功能。
-···php
+```php
 $wechatObj = new WXGZH();
 $wechatObj->validToken();
 //$wechatObj->responseMsg();
-···
+```
 等微信公众号Token校验成功之后，将代码还原即可
-···php
+```php
 $wechatObj = new WXGZH();
 //$wechatObj->validToken();
 $wechatObj->responseMsg();
-···
+```
 
 3. wxsearch.php里的论坛附件地址是在DiscuzX3.2下测试的，默认为：http://yourdomain.com/data/attachment/forum/, 如果你的discuz网站附件地址进行过修改，可以进行相应的修改。另外，no image available 的图片地址也可以在此修改。
-···php
+```php
 if($attach){
     $picurl = 'http://yourdomain.come/data/attachment/forum/'.$attach['attachment']; //在此处修改你的网站附件地址
 } else {
     $picurl = 'https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg';  //在此修改no image available 的图片地址
 }
-···
+```
