@@ -39,9 +39,9 @@ function getNews($keyword) {
 
         $picurl;
         if($attach){
-            $picurl = 'http://yourdomain.come/data/attachment/forum/'.$attach['attachment'];
+            $picurl = 'http://yourdomain.come/data/attachment/forum/'.$attach['attachment']; //在此处修改你的网站附件地址
         } else {
-            $picurl = 'http://yourdomain.come/data/attachment/image/nopic.jpg';
+            $picurl = 'https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg';  //在此修改no image available 的图片地址
         }
         $newsItem = array('title'=>$thread['subject'],'desc'=>$thread['subject'] ,'picurl'=>$picurl,
             'url'=>'http://yourdomain.com/forum.php?mod=viewthread&tid='.$tid);
