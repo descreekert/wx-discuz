@@ -1,5 +1,5 @@
 # wx-discuz
-## 微信公众号对接discuz论坛，提供如下简单功能：
+## 微信公众号对接discuz论坛，php版本，提供如下简单功能：
 微信公众号输入搜索关键字，搜索论坛并将包含关键字的帖子（最多5条）以图文消息返回公众号，以帖子里的第一张附件图片作为缩略图（如果没有图片附件，则显示一张[no image available](https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg)的图片），帖子标题作为描述，根据帖子的访问量排序
 
 ## 效果
@@ -35,3 +35,8 @@ if($attach){
     $picurl = 'https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg';  //在此修改no image available 的图片地址
 }
 ```
+## 感谢
+wx.php部分代码参考了[Ivanlovening/wechat](https://github.com/Ivanlovening/wechat),特此表示感谢
+
+## 版权
+Apache license 2.0
