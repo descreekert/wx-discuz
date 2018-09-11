@@ -9,11 +9,15 @@ $discuz = C::app();
 
 $discuz->init();
 
+// 在此修改默认NO image available的图片地址
+define('NO_PIC_URL', 'https://7jita.com/data/attachment/common/logo_small.png');
+
 $keyword = $_GET['keyword'];
 echo getNews($keyword);
 
 function compare_picurl($a, $b) {
-    return strnatcmp($a['picurl'], $b['picurl']);
+    // 图片不存在的排在后面
+    return ($a['picurl']===NO_PIC_URL) - ($b['picurl']===NO_PIC_URL);
 }
 
 function getNews($keyword) {
@@ -36,12 +40,12 @@ function getNews($keyword) {
             AND a.isimage <>0";
         $attach=DB::fetch_first($asql);
 
-        $picurl;
+        $picurl = NO_PIC_URL;
         if($attach){
-            $picurl = 'http://yourdomain.come/data/attachment/forum/'.$attach['attachment']; //在此处修改你的网站附件地址
-        } else {
-            $picurl = 'https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg';  //在此修改no image available 的图片地址
+            //在此处修改你的网站附件地址
+            $picurl = 'https://7jita.com/data/attachment/forum/'.$attach['attachment'];
         }
+        
         $newsItem = array('title'=>$thread['subject'],'desc'=>$thread['subject'] ,'picurl'=>$picurl,
             'url'=>'http://yourdomain.com/forum.php?mod=viewthread&tid='.$tid);
         $news[] = $newsItem;
