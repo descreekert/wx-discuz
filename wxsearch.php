@@ -22,7 +22,6 @@ function getNews($keyword) {
         LEFT JOIN ".DB::table('forum_attachment')." a
           ON t.tid = a.tid
         WHERE t.subject LIKE '%$keyword%'
-          //AND t.fid in (65,121) --modify here to search in specific blocks
         GROUP BY t.tid
         ORDER BY t.views DESC, count(a.aid) DESC
         LIMIT 10";
