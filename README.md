@@ -1,6 +1,6 @@
 # wx-discuz
 ## 微信公众号对接discuz论坛，php版本，提供如下简单功能：
-微信公众号输入搜索关键字，搜索论坛并将包含关键字的帖子（最多5条）以图文消息返回公众号，以帖子里的第一张附件图片作为缩略图（如果没有图片附件，则显示一张[no image available](https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg)的图片），帖子标题作为描述，根据帖子的访问量排序，如果搜索不到对应帖子，返回一条文本信息，提示搜索结果不存在。
+微信公众号输入搜索关键字，搜索论坛并将包含关键字的帖子（最多5条）以图文消息返回公众号，以帖子里的第一张附件图片作为缩略图（如果没有图片附件，则显示一张[no image available](https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg)的图片），帖子标题作为描述，根据帖子的访问量(优先显示有图片附件的帖子)排序，如果搜索不到对应帖子，返回一条文本信息，提示搜索结果不存在。
 
 ## 效果
 ![alt text](./images/wx-discuz.png)
@@ -26,14 +26,18 @@ $wechatObj = new WXGZH();
 $wechatObj->responseMsg();
 ```
 
-3. wxsearch.php里的论坛附件地址是在DiscuzX3.2下测试的，默认为：http://yourdomain.com/data/attachment/forum/, 如果你的discuz网站附件地址进行过修改，可以进行相应的修改。另外，no image available 的图片地址也可以在此修改。
+3. wxsearch.php里的论坛附件地址是在DiscuzX3.2下测试的，默认为：http://yourdomain.com/data/attachment/forum/, 如果你的discuz网站附件地址进行过修改，可以进行相应的修改。另外，no image available 的图片地址也可以修改。
 ```php
 if($attach){
-    $picurl = 'http://yourdomain.come/data/attachment/forum/'.$attach['attachment']; //在此处修改你的网站附件地址
-} else {
-    $picurl = 'https://thingsgounsaid1.files.wordpress.com/2011/04/no-pic.jpg';  //在此修改no image available 的图片地址
+    //在此处修改你的网站附件地址
+    $picurl = 'https://7jita.com/data/attachment/forum/'.$attach['attachment'];
 }
 ```
+```php
+//在此处修改你的No Image Available 图片地址
+define('NO_PIC_URL', 'https://7jita.com/data/attachment/common/logo_small.png');
+```
+
 ## 感谢
 wx.php部分代码参考了[Ivanlovening/wechat](https://github.com/Ivanlovening/wechat),特此表示感谢
 
